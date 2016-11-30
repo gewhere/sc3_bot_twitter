@@ -1,0 +1,20 @@
+GUI-Classes.schelp
+10_Controls.schelp
+10-SynthDefs-and-Synths.schelp
+audio_rate_mapping.schelp
+PG_06a_Repetition_Contraint_Patterns.schelp
+PG_04_Words_to_Phrases.schelp
+History.schelp
+HiliteGradient.schelp
+DC.schelp
+VarSaw.schelp
+Warp1.schelp
+Buffer.schelp
+BufSampleRate.schelp
+Pprob.schelp
+Pmulpre.schelp
+Knob.schelp
+Point.schelp	20161130-120003
+Gendy2.schelp	20161130-150002
+BHiShelf.schelp	20161130-183706
+Server-Command-Reference.schelp	20161130-210004
