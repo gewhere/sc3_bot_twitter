@@ -58,13 +58,13 @@ filename.close()
 # Assign in myclass the class name
 # assign in mysummary the summary's description
 for readlines in f:
-    m  = re.match('(class|title)::\s*([A-Za-z0-9]*\s)*', readlines, flags=re.IGNORECASE)
-    if n:
-        classOrTitle = re.split('::', m.group(), flags=re.IGNORECASE)
+    match_title  = re.match('(class|title)::\s*([A-Za-z0-9]*\s)*', readlines, flags=re.IGNORECASE)
+    if match_title:
+        classOrTitle = re.split('::', match_title.group(), flags=re.IGNORECASE)
         myclass = classOrTitle[1]
-    m = re.match('summary::\s*([A-Za-z0-9]*:*\s)*', readlines, flags=re.IGNORECASE)
-    if n:
-        summary = re.split('::', n.group(), flags=re.IGNORECASE)
+    match_summary = re.match('summary::\s*([A-Za-z0-9]*:*\s)*', readlines, flags=re.IGNORECASE)
+    if match_summary:
+        summary = re.split('::', match_summary.group(), flags=re.IGNORECASE)
         mysummary = summary[1]
 
 #print(os.path.splitext(helpfile)[0]) # remove file extension
@@ -78,15 +78,15 @@ api.update_status(status=line)
 # matching and printing a ugen tweet
 myugens = []
 for readlines in f:
-    k  = re.match('categories::\s*ugens(>*A-Za-z)*', readlines, flags=re.IGNORECASE)
-    if k:
-        print(k.group())
+    match_category  = re.match('categories::\s*ugens(>*A-Za-z)*', readlines, flags=re.IGNORECASE)
+    if match_category:
+        print(match_category.group())
         for line in f:
-            l  = re.match('\{(.*?)\}\.(play);?', readlines, flags=re.IGNORECASE)
-            if l:
+            match_ugen  = re.match('\{(.*?)\}\.(play);?', readlines, flags=re.IGNORECASE)
+            if match_ugen:
                 # append lines smaller than 140 chars
-                if len(l.group(0))<140:
-                    myugens.append(l.group(0))
+                if len(match_ugen.group(0))<140:
+                    myugens.append(match_ugen.group(0))
         ugentweet = max(myugens)
         api.update_status(status=ugentweet)
 
