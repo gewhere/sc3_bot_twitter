@@ -58,11 +58,11 @@ filename.close()
 # Assign in myclass the class name
 # assign in summary the summary's description
 for readlines in f:
-    m  = re.match('(class|title)::\s*([A-Za-z]*:*\s)*', readlines, flags=re.IGNORECASE)
+    m  = re.match('(class|title)::\s*([A-Za-z0-9]*\s)*', readlines, flags=re.IGNORECASE)
     if n:
         classOrTitle = re.split('::', m.group(), flags=re.IGNORECASE)
         myclass = classOrTitle[1]
-    m = re.match('summary::\s*([A-Za-z]*:*\s)*', readlines, flags=re.IGNORECASE)
+    m = re.match('summary::\s*([A-Za-z0-9]*:*\s)*', readlines, flags=re.IGNORECASE)
     if n:
         summary = re.split('::', n.group(), flags=re.IGNORECASE)
         mysummary = summary[1]
