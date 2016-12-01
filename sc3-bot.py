@@ -56,7 +56,7 @@ f = filename.readlines()
 filename.close()
 
 # Assign in myclass the class name
-# assign in summary the summary's description
+# assign in mysummary the summary's description
 for readlines in f:
     m  = re.match('(class|title)::\s*([A-Za-z0-9]*\s)*', readlines, flags=re.IGNORECASE)
     if n:
@@ -74,6 +74,23 @@ helpurl = 'http://doc.sccode.org/' + helpdir + os.path.splitext(helpfile)[0] + '
 line = myclass.rstrip() + ': ' + mysummary + helpurl
 # post tweet
 api.update_status(status=line)
+
+# matching and printing a ugen tweet
+myugens = []
+for readlines in f:
+    k  = re.match('categories::\s*ugens(>*A-Za-z)*', readlines, flags=re.IGNORECASE)
+    if k:
+        print(k.group())
+        for line in f:
+            l  = re.match('\{(.*?)\}\.(play);?', readlines, flags=re.IGNORECASE)
+            if l:
+                k = re.split('::', l.group(), flags=re.IGNORECASE)
+                # append lines smaller than 140 chars
+                if len(k[0])<140:
+                    myugens.append(k[0])
+        ugentweet = max(myugens)
+        api.update_status(status=ugentweet)
+
 # print tweet in cli
 print(line)
 # time.sleep(120)#Tweet every 15 minutes
