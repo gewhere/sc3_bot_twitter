@@ -88,5 +88,9 @@ print(line)
 # time.sleep(120)#Tweet every 15 minutes
 
 for follower in tweepy.Cursor(api.followers).items():
-    follower.follow()
-    print (follower.screen_name)
+    try:
+        follower.follow()
+        print (follower.screen_name)
+    except:
+        print ('Failed to follow: ', follower.screen_name)
+        pass
