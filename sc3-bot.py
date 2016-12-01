@@ -25,10 +25,10 @@ elements = ['Classes/', 'Guides/', 'Overviews/', 'Reference/', 'Tutorials/', 'Tu
 weights = [0.821, 0.047, 0.009, 0.042, 0.008, 0.023, 0.016, 0.012, 0.022] # weighted choice based on the number of help files in folders
 
 helpdir = choice(elements, p=weights)
-path = "/path/to/bot-data/" + helpdir
+path = "/home/aucotsi/personal/python/tweepy/bot-data/" + helpdir
 helpfile = random.choice(os.listdir(path))
 
-logfile = '/path/to/bot-data/history-sc3-bot.txt'
+logfile = '/home/aucotsi/personal/python/tweepy/bot-data/history-sc3-bot.txt'
 fn = open(logfile, 'r')
 fnlines=fn.readlines()
 fn.close()
@@ -40,7 +40,7 @@ for i in fnlines:
     if r:
         print("Helpfile already posted!")
         helpdir = choice(elements, p=weights)
-        path = "/path/to/bot-data/" + helpdir
+        path = "/home/aucotsi/personal/python/tweepy/bot-data/" + helpdir
         helpfile = random.choice(os.listdir(path))
 
 # Write helpfile to log
@@ -55,32 +55,23 @@ filename = open(path + helpfile,'r')
 f = filename.readlines()
 filename.close()
 
-# Need improvement
 # Assign in myclass the class name
-if (helpdir == 'Classes/'):
-    myclass = f[0].partition('class::')
-    if myclass[2] == '':
-        myclass = f[0].partition('CLASS::')
-        if myclass[2] == '':
-            myclass = f[0].partition('Class::')
-else:
-    myclass = f[0].partition('title::')
-    if myclass[2] == '':
-        myclass = f[0].partition('TITLE::')
-        if myclass[2] == '':
-            myclass = f[0].partition('Title::')
 # assign in summary the summary's description
-summary = f[1].partition('summary::')
-if summary[2] == '':
-    summary = f[1].partition('SUMMARY::')
-    if summary[2] == '':
-        summary = f[1].partition('Summary::')
+for readlines in f:
+    m  = re.match('(class|title)::\s*([A-Za-z]*:*\s)*', readlines, flags=re.IGNORECASE)
+    if n:
+        classOrTitle = re.split('::', m.group(), flags=re.IGNORECASE)
+        myclass = classOrTitle[1]
+    m = re.match('summary::\s*([A-Za-z]*:*\s)*', readlines, flags=re.IGNORECASE)
+    if n:
+        summary = re.split('::', n.group(), flags=re.IGNORECASE)
+        mysummary = summary[1]
 
 #print(os.path.splitext(helpfile)[0]) # remove file extension
 helpurl = 'http://doc.sccode.org/' + helpdir + os.path.splitext(helpfile)[0] + '.html'
 
-# rstrip removes \s on the right side (summary may have one or two \s)
-line = myclass[2].rstrip() + ': ' + summary[2] + helpurl
+# rstrip removes \n on the right side
+line = myclass.rstrip() + ': ' + mysummary + helpurl
 # post tweet
 api.update_status(status=line)
 # print tweet in cli
