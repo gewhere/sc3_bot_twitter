@@ -84,10 +84,9 @@ for readlines in f:
         for line in f:
             l  = re.match('\{(.*?)\}\.(play);?', readlines, flags=re.IGNORECASE)
             if l:
-                k = re.split('::', l.group(), flags=re.IGNORECASE)
                 # append lines smaller than 140 chars
-                if len(k[0])<140:
-                    myugens.append(k[0])
+                if len(l.group(0))<140:
+                    myugens.append(l.group(0))
         ugentweet = max(myugens)
         api.update_status(status=ugentweet)
 
