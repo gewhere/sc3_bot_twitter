@@ -10,7 +10,7 @@ Twitter account: [@sc3_bot](https://twitter.com/sc3_bot)
       * `<class OR title>: <summary> http://doc.sccode.org/<schelp-file-name>.html`
     * It keeps a log of posted help files in `./bot-data/history-sc3-bot.txt`, in order to secure unique posts.
     * It follows back new followers, and unfollows non-followers.
-    * Tweets an online sc-tweet from UGen help files, right after the help file tweet.
+    * Tweets a single line sc-tweet from UGen help files, right after the help file tweet.
 
 ## TODO
 * Write a function to update the weights in random selection
