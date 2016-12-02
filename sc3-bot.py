@@ -23,17 +23,17 @@ user = api.get_user('sc3_bot')
 # copied from /usr/share/SuperCollider/HelpSource
 elements = ['Classes/', 'Guides/', 'Overviews/', 'Reference/', 'Tutorials/', 'Tutorials/A-Practical-Guide/', 'Tutorials/Getting-Started/', 'Tutorials/JITLib/', 'Tutorials/Mark_Polishook_tutorial/']
 weights = [0.821, 0.047, 0.009, 0.042, 0.008, 0.023, 0.016, 0.012, 0.022] # weighted choice based on the number of help files in folders
-
+# chose a dir path and a file to read
 helpdir = choice(elements, p=weights)
 path = "/home/aucotsi/personal/python/tweepy/bot-data/" + helpdir
 helpfile = random.choice(os.listdir(path))
-
+# read log
 logfile = '/home/aucotsi/personal/python/tweepy/bot-data/history-sc3-bot.txt'
 fn = open(logfile, 'r')
 fnlines=fn.readlines()
 fn.close()
 
-# Check if helpfile is already posted
+# Check in logfile if helpfile is already posted
 for i in fnlines:
     regex = re.compile(helpfile)
     r = re.search(regex, i)
@@ -58,7 +58,7 @@ filename.close()
 # Assign in myclass the class name
 # assign in mysummary the summary's description
 for readlines in f:
-    match_title  = re.match('(class|title)::\s*([A-Za-z0-9]*\s)*', readlines, flags=re.IGNORECASE)
+    match_title = re.match('(class|title)::\s*([A-Za-z0-9]*\s)*', readlines, flags=re.IGNORECASE)
     if match_title:
         classOrTitle = re.split('::', match_title.group(), flags=re.IGNORECASE)
         myclass = classOrTitle[1]
@@ -81,23 +81,29 @@ for readlines in f:
     match_category  = re.match('categories::\s*ugens(>*A-Za-z)*', readlines, flags=re.IGNORECASE)
     if match_category:
         print(match_category.group())
-        for line in f:
-            match_ugen  = re.match('\{(.*?)\}\.(play);?', readlines, flags=re.IGNORECASE)
+        for currline in f:
+            match_ugen  = re.match('\{(.*?)\}\.(play);?', currline)
             if match_ugen:
                 # append lines smaller than 140 chars
-                if len(match_ugen.group(0))<140:
-                    myugens.append(match_ugen.group(0))
-        ugentweet = max(myugens)
-        api.update_status(status=ugentweet)
+                try:
+                    if len(match_ugen.group(0))<140:
+                        myugens.append(match_ugen.group(0))
+                except:
+                    pass
+
+if len(myugens) > 0:
+    ugentweet = max(myugens) + '//#sc140'
+    api.update_status(status=ugentweet)
 
 # print tweet in cli
 print(line)
-# time.sleep(120)#Tweet every 15 minutes
 
 for follower in tweepy.Cursor(api.followers).items():
-    try:
-        follower.follow()
-        print (follower.screen_name)
-    except:
-        print ('Failed to follow: ', follower.screen_name)
-        pass
+    follower.follow()
+
+followers = api.followers_ids()
+friends = api.friends_ids()
+
+for i in friends:
+    if i not in followers:
+        api.destroy_friendship(i)
