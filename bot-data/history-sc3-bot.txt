@@ -18,3 +18,15 @@ Point.schelp	20161130-120003
 Gendy2.schelp	20161130-150002
 BHiShelf.schelp	20161130-183706
 Server-Command-Reference.schelp	20161130-210004
+Bag.schelp	20161201-000003
+NodeProxy.schelp	20161201-030004
+LinExp.schelp	20161201-060003
+Archive.schelp	20161201-090003
+LinCongL.schelp	20161201-120003
+OffsetOut.schelp	20161201-150003
+ScopeOut.schelp	20161201-180003
+Quant.schelp	20161201-210004
+LorenzL.schelp	20161202-000006
+Server-Architecture.schelp	20161202-000118
+PV_RandComb.schelp	20161202-030003
+04_Help.schelp	20161202-060004
