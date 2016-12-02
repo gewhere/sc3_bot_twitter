@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import tweepy
+from keys import keys
 
 CONSUMER_KEY = keys['consumer_key']
 CONSUMER_SECRET = keys['consumer_secret']
