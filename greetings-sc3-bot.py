@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 import tweepy
 
-consumer_key = "xvLbp1IHt22JvE0eQRGwYNNWD"
-consumer_secret = "MtEhytllKGYOmeGynT75uPd0JXmvjIoOMh3c7z6t1hqfHnJLEj"
-access_token = "803612839114117120-mduc3Thn5kR2qaEQ5q5Gj6SozcCzz4F"
-access_token_secret = "Xn6Gz5Pduy9kITaGE3qfaQ4fun5dOPd9Rfks45AYCe0O4"
+CONSUMER_KEY = keys['consumer_key']
+CONSUMER_SECRET = keys['consumer_secret']
+ACCESS_TOKEN = keys['access_token']
+ACCESS_TOKEN_SECRET = keys['access_token_secret']
 
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
 api = tweepy.API(auth)
 
