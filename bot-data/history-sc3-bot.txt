@@ -30,3 +30,7 @@ LorenzL.schelp	20161202-000006
 Server-Architecture.schelp	20161202-000118
 PV_RandComb.schelp	20161202-030003
 04_Help.schelp	20161202-060004
+RHPF.schelp	20161202-090003
+AbstractIn.schelp	20161202-120004
+Pstutter.schelp	20161202-150004
+Env.schelp	20161202-180004
