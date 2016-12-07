@@ -103,14 +103,12 @@ for readlines in f:
                 if len(match_ugen.group())<133:
                     myugens.append(match_ugen.group())
 
+# check if classname is included in the tweet
 ugenslist = list()
 for i in myugens:
     r = re.search(myclass.lstrip().rstrip(), i)
     if r:
         ugenslist.append(i)
-        print(i)
-    else:
-        print('Not matched!')
 
 if len(ugenslist) > 0:
     ugentweet = max(ugenslist, key=len) + '//#sc140'
