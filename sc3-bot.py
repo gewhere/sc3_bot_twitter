@@ -97,7 +97,7 @@ for readlines in f:
     if match_category:
         print(match_category.group())
         for currline in f:
-            match_ugen = re.search('\{(.*?)\}\.(play);?', currline)
+            match_ugen = re.search('(play)?\(?\{.*?}\)?\.(play)?;?', currline)
             if match_ugen:
                 # append lines smaller than 140 chars
                 if len(match_ugen.group())<133:
