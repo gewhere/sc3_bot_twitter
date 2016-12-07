@@ -15,7 +15,7 @@ api = tweepy.API(auth)
 
 user = api.get_user('sc3_bot')
 
-if(user.followers_count % 100 == 0):
+if(user.followers_count % 100 == 0) | (user.followers_count % 100 == 1):
     num = user.followers_count
     line1 = 'Thank you SCers! {0} has now {1} followers!!\n'.format('@sc3_bot', str(num))
     line2 = '{} do: {{ "Robotic thanks!".postln }}'.format(str(num))

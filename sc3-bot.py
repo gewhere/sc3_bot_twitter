@@ -93,20 +93,29 @@ api.update_status(status=line)
 # matching and printing a ugen tweet
 myugens = list()
 for readlines in f:
-    match_category  = re.match('categories::\s*ugens(>*A-Z)*', readlines, flags=re.IGNORECASE)
+    match_category = re.match('categories::\s*ugens(>*A-Z)*', readlines, flags=re.IGNORECASE)
     if match_category:
         print(match_category.group())
         for currline in f:
-            match_ugen  = re.match('\{(.*?)\}\.(play);?', currline)
+            match_ugen = re.search('\{(.*?)\}\.(play);?', currline)
             if match_ugen:
                 # append lines smaller than 140 chars
                 if len(match_ugen.group())<133:
                     myugens.append(match_ugen.group())
 
-if len(myugens) > 0:
-    ugentweet = max(myugens, key=len) + '//#sc140'
+ugenslist = list()
+for i in myugens:
+    r = re.search(myclass.lstrip().rstrip(), i)
+    if r:
+        ugenslist.append(i)
+        print(i)
+    else:
+        print('Not matched!')
+
+if len(ugenslist) > 0:
+    ugentweet = max(ugenslist, key=len) + '//#sc140'
     api.update_status(status=ugentweet) # post sc140 tweet
-    #print(ugentweet)
+    print(ugentweet)
 
 # print tweet in cli
 print(line)

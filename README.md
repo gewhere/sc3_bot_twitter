@@ -13,4 +13,4 @@ Twitter account: [@sc3_bot](https://twitter.com/sc3_bot)
     * Tweets a single line sc-tweet from UGen help files, right after the help file tweet.
 
 ## TODO
-* Write a function to update the weights in random selection
+* Write a function to update the weights in random selection based on history log file.
