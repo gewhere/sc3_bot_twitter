@@ -7,6 +7,7 @@ import re
 import tweepy
 import random
 import datetime
+import subprocess
 from numpy.random import choice
 from keys import keys
 
@@ -110,10 +111,36 @@ for i in myugens:
     if r:
         ugenslist.append(i)
 
+# define scd file
+scd_file = datapath + 'tweet.scd'
+# body of scd file
+scd_prefix = 'fork{ s.waitForBoot{ '
+scd_suffix = ' }; 10.wait; 0.exit; }'
+
+# select which tweet to post
 if len(ugenslist) > 0:
     ugentweet = max(ugenslist, key=len) + '//#sc140'
-    api.update_status(status=ugentweet) # post sc140 tweet
-    print(ugentweet)
+    # append to scd file
+    with open(scd_file, "a") as scd:
+        scd.write(scd_prefix + ugentweet + scd_suffix)
+        scd.close()
+
+# start sclang to check if file is executable
+p = subprocess.Popen(['sclang', scd_file], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+(output, err) = p.communicate()
+p_status = p.wait()
+if p_status == 0:
+    r = re.findall('(ERROR)+', str(output), flags=re.IGNORECASE)
+    if r:
+        print('An ERROR occurred!')
+    else:
+        api.update_status(status=ugentweet) # post sc140 tweet
+        print(ugentweet)
+
+# empty file
+with open(scd_file, "w") as scd:
+    scd.truncate()
+    scd.close()
 
 # print tweet in cli
 print(line)

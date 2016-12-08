@@ -55,3 +55,5 @@ AmpComp.schelp	20161207-060004
 HenonL.schelp	20161207-120004
 PV_Conj.schelp	20161207-180006
 NodeMap.schelp	20161208-000003
+Streams-Patterns-Events1.schelp	20161208-060003
+BendResponder.schelp	20161208-120004
