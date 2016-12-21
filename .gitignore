@@ -3,4 +3,5 @@ keys.py
 **/*.swp
 __pycache__
 *.pyc
-*.sc*
+**/*.sc*
+**/*.log

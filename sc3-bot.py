@@ -91,62 +91,19 @@ line = myclass.rstrip() + ': ' + mysummary + helpurl
 # post tweet with helpfile
 api.update_status(status=line)
 
-# matching and printing a ugen tweet
-myugens = list()
-for readlines in f:
-    match_category = re.match('categories::\s*ugens(>*A-Z)*', readlines, flags=re.IGNORECASE)
-    if match_category:
-        print(match_category.group())
-        for currline in f:
-            match_ugen = re.search('(play)?\(?\{.*?}\)?\.(play)?;?', currline)
-            if match_ugen:
-                # append lines smaller than 140 chars
-                if len(match_ugen.group())<133:
-                    myugens.append(match_ugen.group())
-
-# check if classname is included in the tweet
-ugenslist = list()
-for i in myugens:
-    r = re.search(myclass.lstrip().rstrip(), i)
-    if r:
-        ugenslist.append(i)
-
-# define scd file
-scd_file = datapath + 'tweet.scd'
-# body of scd file
-scd_prefix = 'fork{ s.waitForBoot{ '
-scd_suffix = ' }; 10.wait; 0.exit; }'
-
-# select which tweet to post
-if len(ugenslist) > 0:
-    ugentweet = max(ugenslist, key=len) + '//#sc140'
-    # append to scd file
-    with open(scd_file, "a") as scd:
-        scd.write(scd_prefix + ugentweet + scd_suffix)
-        scd.close()
-
-# start sclang to check if file is executable
-p = subprocess.Popen(['sclang', scd_file], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-(output, err) = p.communicate()
-p_status = p.wait()
-if p_status == 0:
-    r = re.findall('(ERROR)+', str(output), flags=re.IGNORECASE)
-    if r:
-        print('An ERROR occurred!')
-    else:
-        api.update_status(status=ugentweet) # post sc140 tweet
-        print(ugentweet)
-
-# empty file
-with open(scd_file, "w") as scd:
-    scd.truncate()
-    scd.close()
-
 # print tweet in cli
 print(line)
 
 followers = api.followers_ids()
 friends = api.friends_ids()
+
+# follow back followers
+for follower in tweepy.Cursor(api.followers).items():
+    try:
+        follower.follow()
+    except:
+        pass
+
 # unfollow non-followers
 for i in friends:
     if i not in followers:
@@ -154,7 +111,3 @@ for i in friends:
             api.destroy_friendship(i)
         except:
             pass
-
-# follow back followers
-for follower in tweepy.Cursor(api.followers).items():
-    follower.follow()

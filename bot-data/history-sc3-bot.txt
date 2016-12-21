@@ -1,59 +1,109 @@
-GUI-Classes.schelp
-10_Controls.schelp
-10-SynthDefs-and-Synths.schelp
-audio_rate_mapping.schelp
-PG_06a_Repetition_Contraint_Patterns.schelp
-PG_04_Words_to_Phrases.schelp
-History.schelp
-HiliteGradient.schelp
-DC.schelp
-VarSaw.schelp
-Warp1.schelp
-Buffer.schelp
-BufSampleRate.schelp
-Pprob.schelp
-Pmulpre.schelp
-Knob.schelp
-Point.schelp	20161130-120003
-Gendy2.schelp	20161130-150002
-BHiShelf.schelp	20161130-183706
-Server-Command-Reference.schelp	20161130-210004
-Bag.schelp	20161201-000003
-NodeProxy.schelp	20161201-030004
-LinExp.schelp	20161201-060003
-Archive.schelp	20161201-090003
-LinCongL.schelp	20161201-120003
-OffsetOut.schelp	20161201-150003
-ScopeOut.schelp	20161201-180003
-Quant.schelp	20161201-210004
-LorenzL.schelp	20161202-000006
-Server-Architecture.schelp	20161202-000118
-PV_RandComb.schelp	20161202-030003
-04_Help.schelp	20161202-060004
-RHPF.schelp	20161202-090003
-AbstractIn.schelp	20161202-120004
-Pstutter.schelp	20161202-150004
-Env.schelp	20161202-180004
-IdentityBag.schelp	20161203-000012
-LinkedList.schelp	20161203-060005
-WhiteNoise.schelp	20161203-120005
-16-Sequencing-with-Patterns.schelp	20161203-180005
-Server.schelp	20161204-000009
-05_The_network.schelp	20161204-060007
-StreamClutch.schelp	20161204-120003
-Pitch.schelp	20161204-180003
-FreeSelfWhenDone.schelp	20161205-000007
-MouseX.schelp	20161205-060005
-Hasher.schelp	20161205-120004
-PV_RectComb2.schelp	20161205-180004
-HPZ2.schelp	20161206-000005
-SC3vsSC2.schelp	20161206-060004
-Pan4.schelp	20161206-120005
-PmonoArtic.schelp	20161206-180005
-NodeControl.schelp	20161207-000005
-AmpComp.schelp	20161207-060004
-HenonL.schelp	20161207-120004
-PV_Conj.schelp	20161207-180006
-NodeMap.schelp	20161208-000003
-Streams-Patterns-Events1.schelp	20161208-060003
-BendResponder.schelp	20161208-120004
+GUI-Classes
+10_Controls
+10-SynthDefs-and-Synths
+audio_rate_mapping
+PG_06a_Repetition_Contraint_Patterns
+PG_04_Words_to_Phrases
+History
+HiliteGradient
+DC
+VarSaw
+Warp1
+Buffer
+BufSampleRate
+Pprob
+Pmulpre
+Knob
+Point
+Gendy2
+BHiShelf
+Server-Command-Reference
+Bag
+NodeProxy
+LinExp
+Archive
+LinCongL
+OffsetOut
+ScopeOut
+Quant
+LorenzL
+Server-Architecture
+PV_RandComb
+04_Help
+RHPF
+AbstractIn
+Pstutter
+Env
+IdentityBag
+LinkedList
+WhiteNoise
+16-Sequencing-with-Patterns
+Server
+05_The_network
+StreamClutch
+Pitch
+FreeSelfWhenDone
+MouseX
+Hasher
+PV_RectComb2
+HPZ2
+SC3vsSC2
+Pan4
+PmonoArtic
+NodeControl
+AmpComp
+HenonL
+PV_Conj
+NodeMap
+Streams-Patterns-Events1
+BendResponder
+DiskIn
+Rand
+ListComprehensions
+UnpackFFT
+Pseed
+PV_RectComb
+OSCMessagePatternDispatcher
+initClass
+DemandEnvGen
+18_Frequency_modulation
+SystemClock
+CheckBox
+Pchain
+AmpCompA
+SubsampleOffset
+StereoConvolution2L
+LFNoise2
+Pdefn
+plot
+PlayBuf
+StaticText
+Collections
+TouchResponder
+DragBoth
+HIDdef
+PstepNadd
+SplayZ
+Punop
+NdefMixerOld
+Pluck
+NodeProxyEditor
+Lag3UD
+PparGroup
+PG_06f_Server_Control
+ParGroup
+loop
+Tuning
+Order-of-execution
+PV_MagNoise
+BufCombC.schelp	20161219-000007
+NAryOpStream.schelp	20161219-060003
+AllpassL.schelp	20161219-120006
+AbstractWrappingDispatcher.schelp	20161219-180004
+Tracing-Processes.schelp	20161220-000004
+ApplicationStart.schelp	20161220-060004
+Stethoscope.schelp	20161220-120004
+standalones.schelp	20161220-180005
+DelayL.schelp	20161221-000005
+Decay.schelp	20161221-060004
+BufAllpassL.schelp	20161221-120005
